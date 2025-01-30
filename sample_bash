@@ -1,0 +1,23 @@
+curl -X POST http://localhost:5000/deploy -H "Content-Type: application/json" -d '{
+    "tenantIds": ["tenant-id-1", "tenant-id-2"],
+    "clientId": "your-client-id",
+    "clientSecret": "your-client-secret",
+    "policyJson": [
+        {
+            "Name": "AllowedLocations",
+            "DisplayName": "Allowed Locations",
+            "Description": "Policy to enforce allowed locations for resources.",
+            "Rule": {
+                "if": {
+                    "not": {
+                        "field": "location",
+                        "in": ["eastus", "westus"]
+                    }
+                },
+                "then": {
+                    "effect": "deny"
+                }
+            }
+        }
+    ]
+}'

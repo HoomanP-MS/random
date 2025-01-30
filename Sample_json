@@ -1,0 +1,18 @@
+[
+    {
+        "Name": "AllowedLocations",
+        "DisplayName": "Allowed Locations",
+        "Description": "Policy to enforce allowed locations for resources.",
+        "Rule": {
+            "if": {
+                "not": {
+                    "field": "location",
+                    "in": ["eastus", "westus"]
+                }
+            },
+            "then": {
+                "effect": "deny"
+            }
+        }
+    }
+]
